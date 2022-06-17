@@ -113,3 +113,7 @@ Tiny (not live) API of the top 400 richest people in the world according to [For
   "netWorth": 201430.751
 }
 ```
+
+---
+
+Data from 17.06.2022
