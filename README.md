@@ -5,7 +5,7 @@ Tiny (not live) API of the top 400 richest people in the world according to [For
 ### Endpoints:
 
 - `/`: Get the top 400 billionaires.
-- `/:id`: Get a billionaire by ID.
+- `/person/:id`: Get a billionaire by ID.
 
 ### Examples:
 
