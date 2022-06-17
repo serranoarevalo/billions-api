@@ -25,6 +25,13 @@ export default {
     env: Env,
     ctx: ExecutionContext
   ): Promise<Response> {
+    if (request.method !== "GET") {
+      return new Response(null, {
+        status: 405,
+      });
+    }
+    const { pathname } = new URL(request.url);
+    console.log(pathname);
     return new Response("Hello World!");
   },
 };
