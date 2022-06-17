@@ -8,6 +8,8 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+import { completeDB, excerptsDB } from "./db";
+
 export interface Env {
   // Example binding to KV. Learn more at https://developers.cloudflare.com/workers/runtime-apis/kv/
   // MY_KV_NAMESPACE: KVNamespace;
@@ -18,6 +20,16 @@ export interface Env {
   // Example binding to R2. Learn more at https://developers.cloudflare.com/workers/runtime-apis/r2/
   // MY_BUCKET: R2Bucket;
 }
+
+const headers = {
+  "Content-Type": "application/json;charset=UTF-8",
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET,HEAD,POST,OPTIONS",
+  "Access-Control-Max-Age": "86400",
+};
+
+const makeJSONResponse = (data: any) =>
+  new Response(JSON.stringify(data), { headers });
 
 export default {
   async fetch(
@@ -31,7 +43,16 @@ export default {
       });
     }
     const { pathname } = new URL(request.url);
-    console.log(pathname);
-    return new Response("Hello World!");
+    if (pathname.includes("person")) {
+      const [_, id] = pathname.split("/person/");
+      if (!(id in completeDB)) {
+        return new Response(null, {
+          headers,
+          status: 404,
+        });
+      }
+      return makeJSONResponse(completeDB[id]);
+    }
+    return makeJSONResponse(excerptsDB);
   },
 };
