@@ -1,6 +1,6 @@
 # Billions API
 
-Tiny (not live) API of the top 400 richest people in the world according to [Forbes](https://www.forbes.com/real-time-billionaires/) for [캐럿마켓 챌린지](https://nomadcoder.co/carrot-challenge)
+Tiny (not live) API of the top 400 richest people in the world according to [Forbes](https://www.forbes.com/real-time-billionaires/) for [캐럿마켓 챌린지](https://nomadcoders.co/carrot-challenge)
 
 ### Endpoints:
 
